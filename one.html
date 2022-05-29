@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js" integrity="sha512-n/4gHW3atM3QqRcbCn6ewmpxcLAHGaDjpEBu4xZd47N0W2oQ+6q7oc3PXstrJYXcbNU1OHdQ1T7pAP+gi5Yu8g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+<body>
+    <form id="form">
+        <input type="text" name="form" id="fo" value>
+        <button id="sub" onclick="sub()">Submit</button>
+    </form>
+    <script>
+        
+        function sub(){
+            let f=document.getElementById("form");
+            docu=document.getElementById("fo");
+            let user=[];
+            user=JSON.parse(localStorage.getItem("users"))?JSON.parse(localStorage.getItem("users")):[];
+            if(user.some((v)=>{
+               return v.docu === docu;
+            })){
+              console.log("dupli");
+            }
+            else{
+                user.push({
+                    "name":docu
+                })
+
+            }
+            localStorage.setItem("users",JSON.stringify(user))
+      }
+    </script>
+</body>
+</html>
